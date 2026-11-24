@@ -6,6 +6,8 @@ Writes one horror story of exactly two sentences (<=400 chars) to
 import os
 import re
 
+MAX_CHARS = 400  # sealed scorer gate (RULES.txt): 1-400 characters.
+
 TEXT = (
     "The new doorbell camera sends me a photo every time someone stands "
     "on the porch, and at 03:12 it sent one of me, standing on my own "
@@ -30,7 +32,7 @@ def check_gate(text):
     """
     if not isinstance(text, str):
         return False
-    if not 1 <= len(text) <= 400:
+    if not 1 <= len(text) <= MAX_CHARS:
         return False
     if not text.strip():
         return False
